@@ -6,19 +6,19 @@ const {
   removePost,
 } = require("../services/postsService");
 
-const getPosts = (req, res, next) => {
+const getPosts = async (req, res, next) => {
   try {
-    const posts = findAllPosts();
+    const posts = await findAllPosts();
     return res.json(posts);
   } catch (err) {
     next(err);
   }
 };
 
-const getPost = (req, res, next) => {
+const getPost = async (req, res, next) => {
   try {
     const id = Number(req.params.id);
-    const post = findPostById(id);
+    const post = await findPostById(id);
 
     return res.json(post);
   } catch (err) {
@@ -26,28 +26,25 @@ const getPost = (req, res, next) => {
   }
 };
 
-const createPost = (req, res, next) => {
+const createPost = async (req, res, next) => {
   try {
-    const newPost = createNewPost(req.body);
+    const newPostId = await createNewPost(req.body);
 
-    return res.status(201).json(newPost);
+    return res.status(201).json({
+      message: '게시글이 생성 되었습니다.',
+      id: newPostId
+    });
   } catch (err) {
     next(err);
   }
 };
 
-const updatePosts = (req, res, next) => {
+const updatePosts = async (req, res, next) => {
   try {
     const id = Number(req.params.id);
     const data = req.body;
 
-    const updatedPost = updatePost(id, data);
-
-    if (!updatedPost) {
-      return res.status(404).json({
-        message: "게시글이 없습니다.",
-      });
-    }
+    await updatePost(id, data)
 
     return res.status(200).json({
       message: "수정이 완료되었습니다.",
@@ -57,16 +54,11 @@ const updatePosts = (req, res, next) => {
   }
 };
 
-const removePosts = (req, res, next) => {
+const removePosts = async (req, res, next) => {
   try {
     const id = Number(req.params.id);
-    const isRemoved = removePost(id);
-
-    if (!isRemoved) {
-      return res.status(404).json({
-        message: "게시글이 없습니다.",
-      });
-    }
+    
+    await removePost(id);
 
     return res.status(200).json({
       message: "삭제가 완료되었습니다.",

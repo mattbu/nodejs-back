@@ -1,0 +1,70 @@
+const pool = require('../config/db')
+
+const findAll = async () => {
+  const [rows] = await pool.query(
+    "SELECT * FROM posts"
+  );
+
+  return rows;
+};
+
+const findById = async (id) => {
+  const [rows] = await pool.query(
+    "SELECT * FROM posts WHERE id = ?",
+    [id]
+  );
+
+  return rows[0]
+}
+
+const create = async ({ title, content }) => {
+  const [result] = await pool.query(
+    "INSERT INTO posts (title, content) VALUES (?, ?)",
+    [title, content]
+  );
+
+  return result.insertId;
+};
+
+const update = async (id, data) => {
+  const fields = [];
+  const values = [];
+
+  if (data.title !== undefined) {
+    fields.push("title = ?")
+    values.push(data.title)
+  }
+
+  if (data.content !== undefined) {
+    fields.push("content = ?")
+    values.push(data.content)
+  }
+
+  values.push(id)
+
+  const [result] = await pool.query(
+    `UPDATE posts
+    SET ${fields.join(',')}
+    WHERE id = ?`,
+    values
+  );
+
+  return result;
+};
+
+const remove = async (id) => {
+  const [result] = await pool.query(
+    'DELETE FROM posts WHERE id = ?',
+    [id]
+  );
+
+  return result;
+};
+
+module.exports = {
+  findAll,
+  findById,
+  create,
+  update,
+  remove
+};

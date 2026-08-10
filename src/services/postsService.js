@@ -1,22 +1,11 @@
-const posts = [
-  {
-    id: 1,
-    title: "첫 번째 글",
-    content: "안녕하세요",
-  },
-  {
-    id: 2,
-    title: "두 번째 글",
-    content: "Express 공부중",
-  },
-];
+const {findAll, findById, create, update, remove} = require('../repositories/postsRepository')
 
 const findAllPosts = () => {
-  return posts;
+  return findAll();
 };
 
 const findPostById = (id) => {
-  const post = posts.find((post) => post.id === id);
+  const post = findById(id);
 
   if (!post) {
     const err = new Error("게시글이 없습니다.");
@@ -27,40 +16,40 @@ const findPostById = (id) => {
   return post;
 };
 
-const createNewPost = ({ title, content }) => {
-  const newPost = {
-    id: posts.length + 1,
-    title,
-    content,
-  };
-  posts.push(newPost);
-
-  return newPost;
+const createNewPost = async ({ title, content }) => {
+  const newPostId = await create({ title, content })
+  return newPostId;
 };
 
-const updatePost = (id, data) => {
-  const targetIdx = posts.findIndex((post) => post.id === id);
+const updatePost = async (id, data) => {
+  if (data.title === undefined && data.content === undefined) {
+    const err = new Error('수정할 데이터가 없습니다.');
+    err.status = 400
 
-  if (targetIdx === -1) {
-    return null;
+    throw err
   }
 
-  posts[targetIdx] = {
-    ...posts[targetIdx],
-    ...data,
-  };
+  const result = await update(id, data);
 
-  return posts[targetIdx];
+  if (result.affectedRows === 0) {
+    const err = new Error("게시글이 없습니다.");
+    err.status = 404;
+
+    throw err;
+  }
+
+  return true
 };
 
-const removePost = (id) => {
-  const targetIdx = posts.findIndex((post) => post.id === id);
+const removePost = async (id) => {
+  const result = await remove(id);
 
-  if (targetIdx === -1) {
-    return false;
+  if (result.affectedRows === 0) {
+    const err = new Error("게시글이 없습니다.");
+    err.status = 404;
+
+    throw err;
   }
-
-  posts.splice(targetIdx, 1);
 
   return true;
 };
