@@ -1,0 +1,6 @@
+PATCH  http://localhost:3001/posts/1
+Content-Type: application/json;
+
+{
+    "content": "1번 컨텐츠 수정" 
+}
