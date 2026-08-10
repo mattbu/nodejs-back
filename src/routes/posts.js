@@ -1,4 +1,5 @@
 const express = require("express");
+
 const {
   getPosts,
   getPost,
@@ -6,14 +7,17 @@ const {
   updatePosts,
   removePosts,
 } = require("../controllers/postsController");
-const { validateCreatePost, validateUpdatePost } = require('../middleware/postValidation')
+
+const { validatePostId, validateCreatePost, validateUpdatePost } = require('../middleware/postValidation')
+
+const validate = require('../middleware/validate')
 
 const router = express.Router();
 
 router.get("/", getPosts);
-router.get("/:id", getPost);
-router.post("/", validateCreatePost, createPost);
-router.patch("/:id", validateUpdatePost, updatePosts);
-router.delete("/:id", removePosts);
+router.get("/:id", validatePostId, validate, getPost);
+router.post("/", validateCreatePost, validate, createPost);
+router.patch("/:id", validatePostId, validateUpdatePost, validate, updatePosts);
+router.delete("/:id", validatePostId, validate, removePosts);
 
 module.exports = router;
