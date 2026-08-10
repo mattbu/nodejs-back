@@ -6,6 +6,8 @@ const {
   removePost,
 } = require("../services/postsService");
 
+const {createPostDto, updatePostDto} = require('../dtos/postsDto')
+
 const getPosts = async (req, res, next) => {
   try {
     const posts = await findAllPosts();
@@ -28,7 +30,8 @@ const getPost = async (req, res, next) => {
 
 const createPost = async (req, res, next) => {
   try {
-    const newPostId = await createNewPost(req.body);
+    const data = createPostDto(req.body)
+    const newPostId = await createNewPost(data);
 
     return res.status(201).json({
       message: '게시글이 생성 되었습니다.',
@@ -42,7 +45,7 @@ const createPost = async (req, res, next) => {
 const updatePosts = async (req, res, next) => {
   try {
     const id = Number(req.params.id);
-    const data = req.body;
+    const data = updatePostDto(req.body);
 
     await updatePost(id, data)
 
