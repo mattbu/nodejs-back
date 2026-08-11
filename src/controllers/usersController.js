@@ -18,11 +18,12 @@ const register = async (req, res, next) => {
 const login = async (req, res, next) => {
     try {
         const data = await createLoginDto(req.body)
-        const user = await loginUser(data)
+        const result = await loginUser(data)
 
         return res.status(200).json({
             message: "로그인 성공",
-            user,
+            accessToken: result.accessToken,
+            user: result.user,
         });
     } catch (err) {
         next(err)

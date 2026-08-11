@@ -1,6 +1,7 @@
 require("dotenv").config();
 
 const express = require("express");
+const authMiddleware = require('./middleware/authMiddleware')
 const postRouter = require("./routes/posts");
 const userRouter = require('./routes/users')
 
@@ -15,7 +16,7 @@ app.use((req, res, next) => {
 });
 
 // route
-app.use("/posts", postRouter);
+app.use("/posts", authMiddleware, postRouter);
 app.use("/users", userRouter);
 
 // error middleware

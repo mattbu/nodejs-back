@@ -1,7 +1,8 @@
-POST http://localhost:3001/users/login
+POST http://localhost:3001/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoidGVzdEBlc2tzay5jb20iLCJpYXQiOjE3ODY0Mzg1OTcsImV4cCI6MTc4NjQ0MjE5N30.xWq0EJ0EBDSfH5NWcVpyYikn6hfyHKzEWLdl8NxPXB0
 Content-Type: application/json
 
 {
-  "email": "test@esk2sk.com",
-  "password": "password123"
+  "title": "test@esksk.com",
+  "content": "password123"
 }

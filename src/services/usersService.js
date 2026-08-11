@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken')
 
 const {
     create,
@@ -48,11 +49,25 @@ const loginUser = async ({email, password}) => {
         throw err;
     }
 
+    const accessToken = jwt.sign(
+        {
+            userId: user.id,
+            email: user.email
+        },
+        process.env.JWT_SECRET,
+        {
+            expiresIn: process.env.JWT_EXPIRES_IN,
+        }
+    )
+
     return {
-        id: user.id,
-        email: user.email,
-        name: user.name,
-    };
+        accessToken,
+        user: {
+            id: user.id,
+            email: user.email,
+            name: user.name,
+        }
+    }
 }
 
 module.exports = {
