@@ -1,8 +1,8 @@
-POST http://localhost:3001/posts
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoidGVzdEBlc2tzay5jb20iLCJpYXQiOjE3ODY0Mzg1OTcsImV4cCI6MTc4NjQ0MjE5N30.xWq0EJ0EBDSfH5NWcVpyYikn6hfyHKzEWLdl8NxPXB0
+GET http://localhost:3001/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoidGVzdEB0ZXN0LmNvbSIsImlhdCI6MTc4NjQ1NjIxMSwiZXhwIjoxNzg2NDU5ODExfQ.SAbEn6pp2lguOTdL5oCBTRtzX74DFnGnPR97p5osEvU
 Content-Type: application/json
 
-{
-  "title": "test@esksk.com",
-  "content": "password123"
-}
+# {
+#   "title": "제목테스트",
+#   "content": "컨텐츠테스트"
+# }
