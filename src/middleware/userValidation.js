@@ -26,6 +26,20 @@ const validateCreateUser = [
       .withMessage("name은 100자를 초과할 수 없습니다."),
 ]
 
+const validateLogin = [
+  body('email')
+    .trim()
+    .notEmpty()
+    .withMessage("email은 필수입니다.")
+    .isEmail()
+    .withMessage("올바른 이메일 형식이 아닙니다."),
+
+  body('password')
+    .notEmpty()
+    .withMessage("password는 필수입니다."),
+]
+
 module.exports = {
-    validateCreateUser
+    validateCreateUser,
+    validateLogin
 }

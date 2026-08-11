@@ -1,7 +1,7 @@
 const pool = require('../config/db')
 
 const create = async ({email, password, name}) => {
-    const [result] = pool.execute(
+    const [result] = await pool.execute(
         `INSERT INTO users (email, password, name)
         VALUES (?, ?, ?)
         `,
@@ -12,7 +12,7 @@ const create = async ({email, password, name}) => {
 }
 
 const findByEmail = async (email) => {
-    const [rows] = pool.execute(
+    const [rows] = await pool.execute(
         `SELECT id, email, password, name
         FROM users
         WHERE email = ?

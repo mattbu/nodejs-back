@@ -6,6 +6,15 @@ const createUserDto = (body) => {
     }
 }
 
+const createLoginDto = (body) => {
+    return {
+        email: body.email,
+        password: body.password
+    }
+
+}
+
 module.exports = {
-    createUserDto
+    createUserDto,
+    createLoginDto
 }

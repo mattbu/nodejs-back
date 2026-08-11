@@ -1,10 +1,10 @@
-const {createUser} = require('../services/usersService')
-const {createUserDto} = require('../dtos/usersDto')
+const {createUser,loginUser} = require('../services/usersService')
+const {createUserDto, createLoginDto} = require('../dtos/usersDto')
 
 const register = async (req, res, next) => {
     try {
-        const data = createUserDto(req.body)
-        const userId = createUser(data)
+        const data = await createUserDto(req.body)
+        const userId = await createUser(data)
 
         return res.status(201).json({
             message: '회원가입이 완료되었습니다.',
@@ -15,6 +15,21 @@ const register = async (req, res, next) => {
     }
 }
 
+const login = async (req, res, next) => {
+    try {
+        const data = await createLoginDto(req.body)
+        const user = await loginUser(data)
+
+        return res.status(200).json({
+            message: "로그인 성공",
+            user,
+        });
+    } catch (err) {
+        next(err)
+    }
+}
+
 module.exports = {
-    register
+    register,
+    login
 }
