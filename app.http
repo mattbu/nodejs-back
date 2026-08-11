@@ -1,8 +1,19 @@
-GET http://localhost:3001/posts
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoidGVzdEB0ZXN0LmNvbSIsImlhdCI6MTc4NjQ1NjIxMSwiZXhwIjoxNzg2NDU5ODExfQ.SAbEn6pp2lguOTdL5oCBTRtzX74DFnGnPR97p5osEvU
+POST http://localhost:3001/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoidGVzdEB0ZXN0LmNvbSIsImlhdCI6MTc4NjQ1NzM3NSwiZXhwIjoxNzg2NDYwOTc1fQ.bOhvKSU1oYEc9BEx7nt08DjROfy8gVQeLjJKMmecrDc
 Content-Type: application/json
 
+{
+  "title": "제목테스트",
+  "content": "컨텐츠테스트"
+}
+
 # {
-#   "title": "제목테스트",
-#   "content": "컨텐츠테스트"
+#   "email": "test5@test.com",
+#   "password": "qlqjs123",
+#   "name": "son"
 # }
+
+{
+  "email": "test@test.com",
+  "password": "qlqjs123"
+}
