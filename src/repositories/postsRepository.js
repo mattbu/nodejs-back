@@ -10,17 +10,20 @@ const findAll = async () => {
 
 const findById = async (id) => {
   const [rows] = await pool.execute(
-    "SELECT * FROM posts WHERE id = ?",
+    `SELECT *
+    FROM posts
+    WHERE id = ?
+    `,
     [id]
   );
 
   return rows[0]
 }
 
-const create = async ({ title, content }) => {
+const create = async ({ title, content, userId }) => {
   const [result] = await pool.execute(
-    "INSERT INTO posts (title, content) VALUES (?, ?)",
-    [title, content]
+    "INSERT INTO posts (title, content, user_id) VALUES (?, ?, ?)",
+    [title, content, userId]
   );
 
   return result.insertId;

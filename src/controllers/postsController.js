@@ -10,7 +10,6 @@ const { createPostDto, updatePostDto } = require("../dtos/postsDto");
 
 const getPosts = async (req, res, next) => {
   try {
-    console.log(req.user);
     const posts = await findAllPosts();
     return res.json(posts);
   } catch (err) {
@@ -31,8 +30,12 @@ const getPost = async (req, res, next) => {
 
 const createPost = async (req, res, next) => {
   try {
+    console.log(req.user)
     const data = createPostDto(req.body);
-    const newPostId = await createNewPost(data);
+    const newPostId = await createNewPost({
+      ...data,
+      userId: req.user.userId
+    });
 
     return res.status(201).json({
       message: "게시글이 생성 되었습니다.",
@@ -46,9 +49,10 @@ const createPost = async (req, res, next) => {
 const updatePosts = async (req, res, next) => {
   try {
     const id = Number(req.params.id);
+    const userId = req.user.userId;
     const data = updatePostDto(req.body);
 
-    await updatePost(id, data);
+    await updatePost(id, userId, data);
 
     return res.status(200).json({
       message: "수정이 완료되었습니다.",
@@ -61,8 +65,9 @@ const updatePosts = async (req, res, next) => {
 const removePosts = async (req, res, next) => {
   try {
     const id = Number(req.params.id);
+    const userId = req.user.userId;
 
-    await removePost(id);
+    await removePost(id, userId);
 
     return res.status(200).json({
       message: "삭제가 완료되었습니다.",
