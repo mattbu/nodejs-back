@@ -1,4 +1,4 @@
-const {createUser,loginUser} = require('../services/usersService')
+const {createUser,loginUser, findAllUsers} = require('../services/usersService')
 const {createUserDto, createLoginDto} = require('../dtos/usersDto')
 
 const register = async (req, res, next) => {
@@ -30,7 +30,18 @@ const login = async (req, res, next) => {
     }
 }
 
+const getUsers = async (req, res, next) => {
+    try {
+        const users = await findAllUsers()
+
+        return res.status(200).json(users)
+    } catch (err) {
+        next(err)
+    }
+}
+
 module.exports = {
     register,
-    login
+    login,
+    getUsers
 }

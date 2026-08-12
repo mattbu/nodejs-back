@@ -13,7 +13,7 @@ const create = async ({email, password, name}) => {
 
 const findByEmail = async (email) => {
     const [rows] = await pool.execute(
-        `SELECT id, email, password, name
+        `SELECT id, email, password, name, role
         FROM users
         WHERE email = ?
         `,
@@ -23,7 +23,18 @@ const findByEmail = async (email) => {
     return rows[0]
 }
 
+const findAll = async () => {
+    const [rows] = await pool.execute(
+        `SELECT id, email, name, role, created_at
+        FROM users
+        `
+    )
+
+    return rows
+}
+
 module.exports = {
     create,
-    findByEmail
+    findByEmail,
+    findAll
 }

@@ -1,32 +1,53 @@
-# POST http://localhost:3001/users/login
-# Content-Type: application/json
+POST http://localhost:3001/users/login
+Content-Type: application/json
 
-# {
-#   "email": "test@esksk.com",
-#   "password": "password123"
-# }
+{
+  "email": "test2@esksk.com",
+  "password": "password123"
+}
 
-# POST http://localhost:3001/posts
-# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoidGVzdEBlc2tzay5jb20iLCJpYXQiOjE3ODY1MDA1MzcsImV4cCI6MTc4NjUwNDEzN30.XaFo_7dA2nFFJAX76ijHLckBDvRS6pmuPOt18D3i7oA
-# Content-Type: application/json
+###
 
-# {
-#   "title": "1번이작성",
-#   "content": "1번이작성"
-# }
+POST http://localhost:3001/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoidGVzdEBlc2tzay5jb20iLCJpYXQiOjE3ODY1MDA1MzcsImV4cCI6MTc4NjUwNDEzN30.XaFo_7dA2nFFJAX76ijHLckBDvRS6pmuPOt18D3i7oA
+Content-Type: application/json
 
-# PATCH http://localhost:3001/posts/6
-# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoidGVzdEBlc2tzay5jb20iLCJpYXQiOjE3ODY1MDc5NjAsImV4cCI6MTc4NjUxMTU2MH0.5cqnY2UoUOm-qu-9dlVv--ponCiABe0u2O8hWyMXh9Y
-# Content-Type: application/json
+{
+  "title": "1번이작성",
+  "content": "1번이작성"
+}
 
-# {
-#   "title": "1번이수정2",
-#   "content": "1번이수정2"
-# }
+###
 
-DELETE  http://localhost:3001/posts/1
+PATCH http://localhost:3001/posts/6
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoidGVzdEBlc2tzay5jb20iLCJpYXQiOjE3ODY1MDc5NjAsImV4cCI6MTc4NjUxMTU2MH0.5cqnY2UoUOm-qu-9dlVv--ponCiABe0u2O8hWyMXh9Y
 Content-Type: application/json
+
+{
+  "title": "1번이수정2",
+  "content": "1번이수정2"
+}
+
+###
+
+GET http://localhost:3001/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoidGVzdDJAZXNrc2suY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3ODY1MTIzODQsImV4cCI6MTc4NjUxNTk4NH0.mLPWZjqm5lA4QPu56WuS3iiDAvlZoORKPkEIK-d-XO8
+Content-Type: application/json
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # {
 #   "email": "test@test.com",

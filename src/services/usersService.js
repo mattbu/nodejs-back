@@ -3,7 +3,8 @@ const jwt = require('jsonwebtoken')
 
 const {
     create,
-    findByEmail
+    findByEmail,
+    findAll
 } = require('../repositories/usersRepository')
 
 const createUser = async ({email, password, name}) => {
@@ -29,6 +30,7 @@ const createUser = async ({email, password, name}) => {
 
 const loginUser = async ({email, password}) => {
     const user = await findByEmail(email)
+    console.log(user, '?')
 
     if (!user) {
         const err = new Error("이메일 또는 비밀번호가 올바르지 않습니다.");
@@ -52,7 +54,8 @@ const loginUser = async ({email, password}) => {
     const accessToken = jwt.sign(
         {
             userId: user.id,
-            email: user.email
+            email: user.email,
+            role: user.role,
         },
         process.env.JWT_SECRET,
         {
@@ -66,11 +69,17 @@ const loginUser = async ({email, password}) => {
             id: user.id,
             email: user.email,
             name: user.name,
+            role: user.role
         }
     }
 }
 
+const findAllUsers = async () => {
+    return await findAll()
+}
+
 module.exports = {
     createUser,
-    loginUser
+    loginUser,
+    findAllUsers
 }
