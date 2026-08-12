@@ -4,6 +4,7 @@ const express = require("express");
 const authMiddleware = require('./middleware/authMiddleware')
 const postRouter = require("./routes/posts");
 const userRouter = require('./routes/users')
+const authRouter = require('./routes/auth')
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use((req, res, next) => {
 // route
 app.use("/posts", authMiddleware, postRouter);
 app.use("/users", userRouter);
+app.use("/auth", authRouter);
 
 // error middleware
 app.use((err, req, res, next) => {

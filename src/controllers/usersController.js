@@ -23,6 +23,7 @@ const login = async (req, res, next) => {
         return res.status(200).json({
             message: "로그인 성공",
             accessToken: result.accessToken,
+            refreshToken: result.refreshToken,
             user: result.user,
         });
     } catch (err) {

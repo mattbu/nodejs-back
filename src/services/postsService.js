@@ -1,4 +1,10 @@
-const {findAll, findById, create, update, remove} = require('../repositories/postsRepository')
+const {
+  findAll,
+  findById,
+  create,
+  update,
+  remove
+} = require('../repositories/postsRepository')
 
 const findAllPosts = () => {
   return findAll();

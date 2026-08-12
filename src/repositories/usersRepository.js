@@ -23,6 +23,19 @@ const findByEmail = async (email) => {
     return rows[0]
 }
 
+const findById = async (id) => {
+  const [rows] = await pool.execute(
+    `
+      SELECT id, email, name, role
+      FROM users
+      WHERE id = ?
+    `,
+    [id]
+  );
+
+  return rows[0];
+};
+
 const findAll = async () => {
     const [rows] = await pool.execute(
         `SELECT id, email, name, role, created_at
@@ -36,5 +49,6 @@ const findAll = async () => {
 module.exports = {
     create,
     findByEmail,
+    findById,
     findAll
 }

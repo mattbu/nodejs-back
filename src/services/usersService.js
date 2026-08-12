@@ -7,6 +7,8 @@ const {
     findAll
 } = require('../repositories/usersRepository')
 
+const { createRefreshToken } = require('../services/refreshTokenService')
+
 const createUser = async ({email, password, name}) => {
     const exsistingUser = await findByEmail(email);
 
@@ -30,7 +32,6 @@ const createUser = async ({email, password, name}) => {
 
 const loginUser = async ({email, password}) => {
     const user = await findByEmail(email)
-    console.log(user, '?')
 
     if (!user) {
         const err = new Error("이메일 또는 비밀번호가 올바르지 않습니다.");
@@ -63,8 +64,28 @@ const loginUser = async ({email, password}) => {
         }
     )
 
+    const refreshToken = jwt.sign(
+        {
+            userId: user.id
+        },
+        process.env.JWT_REFRESH_SECRET,
+        {
+            expiresIn: process.env.JWT_REFRESH_EXPIRES_IN,
+        }
+    )
+
+    const expiresAt = new Date();
+    expiresAt.setDate(expiresAt.getDate() + 7);
+
+    await createRefreshToken({
+        userId: user.id,
+        token: refreshToken,
+        expiresAt,
+    });
+
     return {
         accessToken,
+        refreshToken,
         user: {
             id: user.id,
             email: user.email,

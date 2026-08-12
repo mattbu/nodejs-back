@@ -16,7 +16,6 @@ const {
 } = require('../controllers/usersController')
 
 router.post('/', validateCreateUser, validate, register)
-router.post('/login', validateLogin, validate, login)
 router.get('/', authMiddleware, roleMiddleware(ADMIN), getUsers)
 
 module.exports = router

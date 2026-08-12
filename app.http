@@ -8,8 +8,8 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:3001/posts
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoidGVzdEBlc2tzay5jb20iLCJpYXQiOjE3ODY1MDA1MzcsImV4cCI6MTc4NjUwNDEzN30.XaFo_7dA2nFFJAX76ijHLckBDvRS6pmuPOt18D3i7oA
+GET http://localhost:3001/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoidGVzdDJAZXNrc2suY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3ODY1MjAyNDQsImV4cCI6MTc4NjUyMzg0NH0.yFAaPoyIunzlMexIXQKtx65PBBcZZa9wWRyNYoSlBlE
 Content-Type: application/json
 
 {
