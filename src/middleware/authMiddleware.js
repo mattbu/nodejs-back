@@ -1,21 +1,18 @@
 const jwt = require("jsonwebtoken");
+const { UnauthorizedError } = require('../errors')
 
 const authMiddleware = (req, res, next) => {
   try {
     const authHeader = req.headers.authorization;
 
     if (!authHeader) {
-      return res.status(401).json({
-        message: "인증이 필요합니다.",
-      });
+      return next(new UnauthorizedError("인증이 필요합니다."))
     }
 
     const [type, token] = authHeader.split(" ");
 
     if (type !== "Bearer" || !token) {
-      return res.status(401).json({
-        message: "유효하지 않은 인증 형식입니다.",
-      });
+      return next(new UnauthorizedError("유효하지 않은 인증 형식입니다."))
     }
 
     const decoded = jwt.verify(
@@ -27,9 +24,7 @@ const authMiddleware = (req, res, next) => {
 
     next();
   } catch (err) {
-    return res.status(401).json({
-      message: "유효하지 않은 인증 정보입니다.",
-    });
+    return next(new UnauthorizedError("유효하지 않은 인증 정보입니다."))
   }
 };
 

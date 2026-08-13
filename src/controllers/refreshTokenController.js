@@ -1,22 +1,23 @@
-const {
-    rotateRefreshToken,
-    logout: logoutRefreshToken
-} = require('../services/refreshTokenService')
+const { rotateRefreshToken, logout: logoutRefreshToken } = require('../services/refreshTokenService')
+const { successResponse } = require('../utils/response')
+const { BadRequestError } = require('../errors')
 
 const refresh = async (req, res, next) => {
     try {
         const { refreshToken } = req.body
 
         if (!refreshToken) {
-            const err = new Error("Refresh Token이 필요합니다.");
-            err.status = 400;
-
-            throw err;
+            throw new BadRequestError("Refresh Token이 필요합니다.");
         }
 
         const tokens = await rotateRefreshToken(refreshToken)
 
-        return res.status(200).json(tokens);
+        return successResponse(
+            res,
+            200,
+            '',
+            tokens
+        )
     } catch (err) {
         next(err)
     }
@@ -27,17 +28,16 @@ const logout = async (req, res, next) => {
         const { refreshToken } = req.body
         
         if (!refreshToken) {
-            const err = new Error("Refresh Token이 필요합니다.");
-            err.status = 400;
-
-            throw err;
+            throw new BadRequestError("Refresh Token이 필요합니다.");
         }
 
         await logoutRefreshToken(refreshToken);
 
-        return res.status(200).json({
-            message: "로그아웃 되었습니다."
-        });
+        return successResponse(
+            res,
+            200,
+            "로그아웃 되었습니다."
+        )
     } catch (err) {
         next(err)
     }

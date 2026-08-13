@@ -9,7 +9,7 @@ Content-Type: application/json
 ###
 
 GET http://localhost:3001/posts
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoidGVzdDJAZXNrc2suY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3ODY2MDU2MTcsImV4cCI6MTc4NjYwNTkxN30.lGZRvAuZRPzU2i8al0KxkwJdD2ipYFtnUG0KM0_EjIY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoidGVzdDJAZXNrc2suY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3ODY2MDc1MTMsImV4cCI6MTc4NjYwNzgxM30.WoRmP2xsdVwjEWc-LE2tB7EQMqjXlYU7oqpMEPgMN-g
 Content-Type: application/json
 
 # {
@@ -20,24 +20,35 @@ Content-Type: application/json
 ###
 
 GET http://localhost:3001/posts/2
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoidGVzdDJAZXNrc2suY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3ODY2MDU2MTcsImV4cCI6MTc4NjYwNTkxN30.lGZRvAuZRPzU2i8al0KxkwJdD2ipYFtnUG0KM0_EjIY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoidGVzdDJAZXNrc2suY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3ODY2MDgxMTEsImV4cCI6MTc4NjYwODQxMX0.AgeYSRLoYYCV0Sgex4Q9yTvlAQ1PKRc7AhrvpSU7Bac
 Content-Type: application/json
 
 ###
 
-PATCH http://localhost:3001/posts/6
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoidGVzdEBlc2tzay5jb20iLCJpYXQiOjE3ODY1MDc5NjAsImV4cCI6MTc4NjUxMTU2MH0.5cqnY2UoUOm-qu-9dlVv--ponCiABe0u2O8hWyMXh9Y
+POST http://localhost:3001/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoidGVzdDJAZXNrc2suY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3ODY2MDc1MTMsImV4cCI6MTc4NjYwNzgxM30.WoRmP2xsdVwjEWc-LE2tB7EQMqjXlYU7oqpMEPgMN-g
 Content-Type: application/json
 
 {
-  "title": "1번이수정2",
-  "content": "1번이수정2"
+  "title": "글등록1",
+  "content": "글등록11"
+}
+
+###
+
+PATCH http://localhost:3001/posts/7
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoidGVzdDJAZXNrc2suY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3ODY2MDgxMTEsImV4cCI6MTc4NjYwODQxMX0.AgeYSRLoYYCV0Sgex4Q9yTvlAQ1PKRc7AhrvpSU7Bac
+Content-Type: application/json
+
+{
+  "title": "456",
+  "content": "456"
 }
 
 ###
 
 GET http://localhost:3001/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoidGVzdDJAZXNrc2suY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3ODY1MTIzODQsImV4cCI6MTc4NjUxNTk4NH0.mLPWZjqm5lA4QPu56WuS3iiDAvlZoORKPkEIK-d-XO8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoidGVzdDJAZXNrc2suY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3ODY2MDg2ODEsImV4cCI6MTc4NjYwODk4MX0.DepR4e4HODMSxuare1aSLTy2IAP2tKYsi_XjURAXXXg
 Content-Type: application/json
 
 ###
@@ -46,7 +57,7 @@ POST http://localhost:3001/auth/refresh
 Content-Type: application/json
 
 {
-  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTc4NjYwMzA4MywiZXhwIjoxNzg3MjA3ODgzfQ.HIz4BtG0MSc-WnecYzVfEli17g4KBl7PVdEQQOzQFaw"
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTc4NjYwODExMSwiZXhwIjoxNzg3MjEyOTExfQ.NbI4fZSaP2JJCH_nXdBmBsj9HIvbrOPelrDo6v_Z0S8"
 }
 
 ###
@@ -55,7 +66,7 @@ POST http://localhost:3001/auth/logout
 Content-Type: application/json
 
 {
-  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTc4NjYwMzE1NywiZXhwIjoxNzg3MjA3OTU3fQ.4HxzLwg8ulxwFN3fuCpoh5lv9u21Eyi5btqAjIEdqdg"
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTc4NjYwODExMSwiZXhwIjoxNzg3MjEyOTExfQ.NbI4fZSaP2JJCH_nXdBmBsj9HIvbrOPelrDo6v_Z0S8"
 }
 
 

@@ -2,9 +2,15 @@ const { AppError } = require("../errors");
 
 const errorHandler = (err, req, res, next) => {
     if (err instanceof AppError) {
-        return res.status(err.status).json({
+        const response = {
             message: err.message
-        });
+        };
+
+        if (err.details) {
+            response.errors = err.details;
+        }
+
+        return res.status(err.status).json(response);
     }
 
     console.error(err);

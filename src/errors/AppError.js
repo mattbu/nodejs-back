@@ -1,17 +1,18 @@
 class AppError extends Error {
-      constructor(message, status) {
+      constructor(message, status, details = null) {
         super(message);
 
         this.name = "AppError";
         this.status = status;
+        this.details = details
 
         Error.captureStackTrace(this, this.constructor);
     }
 }
 
 class BadRequestError extends AppError {
-    constructor(message = "잘못된 요청입니다.") {
-        super(message, 400);
+    constructor(message = "잘못된 요청입니다.", details = null) {
+        super(message, 400, details);
     }
 }
 
