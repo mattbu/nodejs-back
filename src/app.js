@@ -2,6 +2,7 @@ require("dotenv").config();
 
 const express = require("express");
 const authMiddleware = require('./middleware/authMiddleware')
+const errorHandler = require('./middleware/errorHandler')
 const postRouter = require("./routes/posts");
 const userRouter = require('./routes/users')
 const authRouter = require('./routes/auth')
@@ -22,13 +23,7 @@ app.use("/users", userRouter);
 app.use("/auth", authRouter);
 
 // error middleware
-app.use((err, req, res, next) => {
-  console.error(err);
-
-  return res.status(err.status || 500).json({
-    message: err.message,
-  });
-});
+app.use(errorHandler);
 
 app.listen(3001, () => {
   console.log("listening port 3001");

@@ -1,23 +1,15 @@
-const {
-  findAll,
-  findById,
-  create,
-  update,
-  remove
-} = require('../repositories/postsRepository')
+const { findAll, findById, create, update, remove } = require('../repositories/postsRepository')
+const { BadRequestError, ForbiddenError, NotFoundError } = require('../errors')
 
 const findAllPosts = () => {
   return findAll();
 };
 
-const findPostById = (id) => {
-  const post = findById(id);
+const findPostById = async (id) => {
+  const post = await findById(id);
 
   if (!post) {
-    const err = new Error("게시글이 없습니다.");
-    err.status = 404;
-
-    throw err;
+    throw new NotFoundError("게시글이 없습니다.")
   }
   return post;
 };
@@ -29,26 +21,17 @@ const createNewPost = async ({ title, content, userId }) => {
 
 const updatePost = async (id, userId, data) => {
   if (data.title === undefined && data.content === undefined) {
-    const err = new Error('수정할 데이터가 없습니다.');
-    err.status = 400
-
-    throw err
+    throw new BadRequestError('수정할 데이터가 없습니다.')
   }
 
   const post = await findById(id)
 
   if (!post) {
-    const err = new Error("게시글이 없습니다.");
-    err.status = 404;
-
-    throw err;
+    throw new NotFoundError("게시글이 없습니다.")
   }
 
   if (post.user_id !== userId) {
-    const err = new Error('수정 권한이 없습니다.')
-    err.status = 403;
-
-    throw err
+    throw new ForbiddenError('수정 권한이 없습니다.')
   }
 
   await update(id, data);
@@ -60,17 +43,11 @@ const removePost = async (id, userId) => {
   const post = await findById(id);
 
   if (!post) {
-    const err = new Error("게시글이 없습니다.");
-    err.status = 404;
-
-    throw err;
+    throw new NotFoundError("게시글이 없습니다.")
   }
 
   if (post.user_id !== userId) {
-    const err = new Error('삭제 권한이 없습니다.')
-    err.status = 403;
-
-    throw err
+    throw new ForbiddenError('삭제 권한이 없습니다.')
   }
 
   await remove(id);

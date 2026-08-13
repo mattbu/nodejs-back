@@ -9,13 +9,19 @@ Content-Type: application/json
 ###
 
 GET http://localhost:3001/posts
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoidGVzdDJAZXNrc2suY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3ODY2MDMxNTcsImV4cCI6MTc4NjYwMzQ1N30.MqGtTIj6BIYNgIHhMs0gFfvcijAflco7D8gHwNMu8Kg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoidGVzdDJAZXNrc2suY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3ODY2MDU2MTcsImV4cCI6MTc4NjYwNTkxN30.lGZRvAuZRPzU2i8al0KxkwJdD2ipYFtnUG0KM0_EjIY
 Content-Type: application/json
 
 # {
 #   "title": "1번이작성",
 #   "content": "1번이작성"
 # }
+
+###
+
+GET http://localhost:3001/posts/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoidGVzdDJAZXNrc2suY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3ODY2MDU2MTcsImV4cCI6MTc4NjYwNTkxN30.lGZRvAuZRPzU2i8al0KxkwJdD2ipYFtnUG0KM0_EjIY
+Content-Type: application/json
 
 ###
 

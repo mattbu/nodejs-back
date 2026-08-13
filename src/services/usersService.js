@@ -2,22 +2,21 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken')
 const ms = require('ms')
 
-const {
-    create,
-    findByEmail,
-    findAll
-} = require('../repositories/usersRepository')
-
+const { create, findByEmail, findAl } = require('../repositories/usersRepository')
 const { createRefreshToken } = require('../services/refreshTokenService')
+const {
+    BadRequestError,
+    UnauthorizedError,
+    ForbiddenError,
+    NotFoundError,
+    ConflictError
+} = require('../errors')
 
 const createUser = async ({email, password, name}) => {
     const exsistingUser = await findByEmail(email);
 
     if (exsistingUser) {
-        const err = new Error('이미 가입된 이메일입니다.')
-        err.status = 409
-
-        throw err
+        throw new ConflictError('이미 가입된 이메일입니다.')
     }
 
     const hasedPassword = await bcrypt.hash(password, 10)
@@ -39,10 +38,7 @@ const loginUser = async ({email, password}) => {
     const user = await findByEmail(email)
 
     if (!user) {
-        const err = new Error("이메일 또는 비밀번호가 올바르지 않습니다.");
-        err.status = 401;
-
-        throw err;
+        throw new UnauthorizedError("이메일 또는 비밀번호가 올바르지 않습니다.");
     }
 
     const isPasswordValid = await bcrypt.compare(
@@ -51,10 +47,7 @@ const loginUser = async ({email, password}) => {
     );
 
     if (!isPasswordValid) {
-        const err = new Error("이메일 또는 비밀번호가 올바르지 않습니다.");
-        err.status = 401;
-
-        throw err;
+        throw new UnauthorizedError("이메일 또는 비밀번호가 올바르지 않습니다.");
     }
 
     const accessToken = jwt.sign(
