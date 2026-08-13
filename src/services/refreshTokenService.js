@@ -118,9 +118,23 @@ const rotateRefreshToken = async (token) => {
     }
 }
 
+const logout = async (token) => {
+    const removed = await remove(token)
+
+    if (!remove) {
+        const err = new Error('유효하지 않은 Refresh Token입니다.')
+        err.status = 401
+
+        throw err
+    }
+
+    return true
+}
+
 module.exports = {
     createRefreshToken,
     findRefreshToken,
     removeRefreshToken,
-    rotateRefreshToken
+    rotateRefreshToken,
+    logout
 }

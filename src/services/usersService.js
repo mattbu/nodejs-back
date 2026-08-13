@@ -31,6 +31,10 @@ const createUser = async ({email, password, name}) => {
     return userId
 }
 
+const findAllUsers = async () => {
+    return await findAll()
+}
+
 const loginUser = async ({email, password}) => {
     const user = await findByEmail(email)
 
@@ -97,12 +101,8 @@ const loginUser = async ({email, password}) => {
     }
 }
 
-const findAllUsers = async () => {
-    return await findAll()
-}
-
 module.exports = {
     createUser,
-    loginUser,
-    findAllUsers
+    findAllUsers,
+    loginUser
 }

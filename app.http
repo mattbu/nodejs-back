@@ -5,11 +5,11 @@ Content-Type: application/json
   "email": "test2@esksk.com",
   "password": "password123"
 }
-
+// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoidGVzdDJAZXNrc2suY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3ODY2MDMxNTcsImV4cCI6MTc4NjYwMzQ1N30.MqGtTIj6BIYNgIHhMs0gFfvcijAflco7D8gHwNMu8Kg
 ###
 
 GET http://localhost:3001/posts
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoidGVzdDJAZXNrc2suY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3ODY1ODA5NDMsImV4cCI6MTc4NjU4MTI0M30.AA3lvlD37kg5vGkLQt8omDmxjoF7ZXTmsz3E26WWt2U
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoidGVzdDJAZXNrc2suY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3ODY2MDMxNTcsImV4cCI6MTc4NjYwMzQ1N30.MqGtTIj6BIYNgIHhMs0gFfvcijAflco7D8gHwNMu8Kg
 Content-Type: application/json
 
 # {
@@ -40,11 +40,17 @@ POST http://localhost:3001/auth/refresh
 Content-Type: application/json
 
 {
-  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTc4NjYwMDA1MCwiZXhwIjoxNzg3MjA0ODUwfQ.Z1qusZVMRZ-I4mpqmLhlcjuJiajijhwBNt2hINaUW0k"
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTc4NjYwMzA4MywiZXhwIjoxNzg3MjA3ODgzfQ.HIz4BtG0MSc-WnecYzVfEli17g4KBl7PVdEQQOzQFaw"
 }
 
+###
 
+POST http://localhost:3001/auth/logout
+Content-Type: application/json
 
+{
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTc4NjYwMzE1NywiZXhwIjoxNzg3MjA3OTU3fQ.4HxzLwg8ulxwFN3fuCpoh5lv9u21Eyi5btqAjIEdqdg"
+}
 
 
 

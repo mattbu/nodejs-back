@@ -1,6 +1,7 @@
 const pool = require('../config/db')
 
 const create = async ({ userId, token, expiresAt }) => {
+    console.log(userId, token, expiresAt)
     const [result] = await pool.execute(
         `
         INSERT INTO refresh_tokens (
