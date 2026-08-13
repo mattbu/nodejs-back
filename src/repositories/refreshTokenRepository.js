@@ -20,7 +20,7 @@ const findByToken = async (token) => {
         `SELECT *
         FROM refresh_tokens
         WHERE token = ?
-        AND expires_in > NOW()
+        AND expires_at > NOW()
         `,
         [token]
     )

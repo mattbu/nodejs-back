@@ -1,4 +1,4 @@
-POST http://localhost:3001/users/login
+POST http://localhost:3001/auth/login
 Content-Type: application/json
 
 {
@@ -9,13 +9,13 @@ Content-Type: application/json
 ###
 
 GET http://localhost:3001/posts
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoidGVzdDJAZXNrc2suY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3ODY1MjAyNDQsImV4cCI6MTc4NjUyMzg0NH0.yFAaPoyIunzlMexIXQKtx65PBBcZZa9wWRyNYoSlBlE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoidGVzdDJAZXNrc2suY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3ODY1ODA5NDMsImV4cCI6MTc4NjU4MTI0M30.AA3lvlD37kg5vGkLQt8omDmxjoF7ZXTmsz3E26WWt2U
 Content-Type: application/json
 
-{
-  "title": "1번이작성",
-  "content": "1번이작성"
-}
+# {
+#   "title": "1번이작성",
+#   "content": "1번이작성"
+# }
 
 ###
 
@@ -34,10 +34,14 @@ GET http://localhost:3001/users
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoidGVzdDJAZXNrc2suY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3ODY1MTIzODQsImV4cCI6MTc4NjUxNTk4NH0.mLPWZjqm5lA4QPu56WuS3iiDAvlZoORKPkEIK-d-XO8
 Content-Type: application/json
 
+###
 
+POST http://localhost:3001/auth/refresh
+Content-Type: application/json
 
-
-
+{
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTc4NjU4MDgwOCwiZXhwIjoxNzg3MTg1NjA4fQ.nQ1FesEa_DbnyRPT87fHUTK1jf4Zp1NiPKpOvOzTgoU"
+}
 
 
 

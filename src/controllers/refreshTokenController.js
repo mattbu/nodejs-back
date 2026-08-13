@@ -7,6 +7,7 @@ const {
 
 const refresh = async (req, res, next) => {
     try {
+        console.log(req.body, '--------------')
         const { refreshToken } = req.body
 
         if (!refreshToken) {
