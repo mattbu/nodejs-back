@@ -1,6 +1,7 @@
 require("dotenv").config();
 
 const express = require("express");
+const logger = require('./middleware/logger')
 const authMiddleware = require('./middleware/authMiddleware')
 const errorHandler = require('./middleware/errorHandler')
 const postRouter = require("./routes/posts");
@@ -12,6 +13,8 @@ const app = express();
 app.use(express.json());
 
 // middleware
+app.use(logger);
+
 app.use((req, res, next) => {
   console.log("in middleware");
   next();

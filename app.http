@@ -19,8 +19,8 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3001/posts/2
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoidGVzdDJAZXNrc2suY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3ODY2MDgxMTEsImV4cCI6MTc4NjYwODQxMX0.AgeYSRLoYYCV0Sgex4Q9yTvlAQ1PKRc7AhrvpSU7Bac
+GET http://localhost:3001/posts/999
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoidGVzdDJAZXNrc2suY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3ODY2MDk5OTksImV4cCI6MTc4NjYxMDI5OX0.x_wgOqkUrYyoq1T0F2HdUul7ky_AfwY6wBrRyHXL8AM
 Content-Type: application/json
 
 ###
