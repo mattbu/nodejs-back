@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken')
+const ms = require('ms')
 
 const {
     create,
@@ -74,8 +75,9 @@ const loginUser = async ({email, password}) => {
         }
     )
 
-    const expiresAt = new Date();
-    expiresAt.setDate(expiresAt.getDate() + 7);
+    const expiresAt = new Date(
+        Date.now() + ms(process.env.JWT_REFRESH_EXPIRES_IN)
+    );
 
     await createRefreshToken({
         userId: user.id,

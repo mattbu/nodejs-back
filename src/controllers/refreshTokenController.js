@@ -1,13 +1,7 @@
-const {
-    createRefreshToken,
-    findRefreshToken,
-    removeRefreshToken,
-    refreshAccessToken
-} = require('../services/refreshTokenService')
+const { rotateRefreshToken } = require('../services/refreshTokenService')
 
 const refresh = async (req, res, next) => {
     try {
-        console.log(req.body, '--------------')
         const { refreshToken } = req.body
 
         if (!refreshToken) {
@@ -17,11 +11,9 @@ const refresh = async (req, res, next) => {
             throw err;
         }
 
-        const accessToken = await refreshAccessToken(refreshToken)
+        const tokens = await rotateRefreshToken(refreshToken)
 
-        return res.status(200).json({
-            accessToken
-        });
+        return res.status(200).json(tokens);
     } catch (err) {
         next(err)
     }
