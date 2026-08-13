@@ -40,14 +40,8 @@ POST http://localhost:3001/auth/refresh
 Content-Type: application/json
 
 {
-  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTc4NjU4NTkwNSwiZXhwIjoxNzg3MTkwNzA1fQ.35Cm9ippsIyOctvXyOCd3pr6WH2blVdzIL7HqjfzHGs"
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTc4NjYwMDA1MCwiZXhwIjoxNzg3MjA0ODUwfQ.Z1qusZVMRZ-I4mpqmLhlcjuJiajijhwBNt2hINaUW0k"
 }
-
-
-
-# eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTc4NjU4NTg2NSwiZXhwIjoxNzg3MTkwNjY1fQ.Wy2uPAbUtAq9Lxou4Din7OjQIvtmQOcQsSSu0Ki7P0Q
-# eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTc4NjU4NTkwNSwiZXhwIjoxNzg3MTkwNzA1fQ.35Cm9ippsIyOctvXyOCd3pr6WH2blVdzIL7HqjfzHGs
-
 
 
 
