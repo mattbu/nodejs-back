@@ -1,23 +1,19 @@
-const {
-  findAllPosts,
-  findPostById,
-  createNewPost,
-  updatePost,
-  removePost,
-} = require("../services/postsService");
+const { getPostListDto } = require('../dtos/postsDto')
+const { findAllPosts, findPostById, createNewPost, updatePost, removePost } = require("../services/postsService");
 
 const { createPostDto, updatePostDto } = require("../dtos/postsDto");
 const { successResponse } = require('../utils/response')
 
 const getPosts = async (req, res, next) => {
   try {
-    const posts = await findAllPosts();
+    const data = await getPostListDto(req.query);
+    const result = await findAllPosts(data);
     
     return successResponse(
       res,
       200,
       '게시글 목록이 조회 되었습니다.',
-      posts
+      result
     )
   } catch (err) {
     next(err);

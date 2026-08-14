@@ -1,8 +1,22 @@
-const { findAll, findById, create, update, remove } = require('../repositories/postsRepository')
+const { findAll, countAll, findById, create, update, remove } = require('../repositories/postsRepository')
 const { BadRequestError, ForbiddenError, NotFoundError } = require('../errors')
 
-const findAllPosts = () => {
-  return findAll();
+const findAllPosts = async ({page, limit}) => {
+  const offset = (page - 1) * limit
+
+  const posts = await findAll({limit, offset});
+  const total = await countAll()
+  const totalPages = Math.ceil(total / limit);
+
+  return {
+    posts,
+    pagination: {
+      page,
+      limit,
+      total,
+      totalPages
+    }
+  }
 };
 
 const findPostById = async (id) => {

@@ -1,3 +1,13 @@
+const getPostListDto = (query) => {
+  const page = Number(query.page) || 1;
+  const limit = Number(query.limit) || 10;
+
+  return {
+    page,
+    limit
+  }
+}
+
 const createPostDto = (body) => {
   return {
     title: body.title,
@@ -20,6 +30,7 @@ const updatePostDto = (body) => {
 }
 
 module.exports = {
+  getPostListDto,
   createPostDto,
   updatePostDto
 };

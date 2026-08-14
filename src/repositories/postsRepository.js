@@ -1,12 +1,30 @@
 const pool = require('../config/db')
 
-const findAll = async () => {
-  const [rows] = await pool.execute(
-    "SELECT * FROM posts"
+const findAll = async ({limit, offset}) => {
+  const [rows] = await pool.query(
+    `
+    SELECT id, title, content, created_at, user_id
+    FROM posts
+    ORDER BY id DESC
+    LIMIT ?
+    OFFSET ?
+    `,
+    [limit, offset]
   );
 
   return rows;
 };
+
+const countAll = async () => {
+    const [rows] = await pool.execute(
+        `
+        SELECT COUNT(*) AS total
+        FROM posts
+        `
+    );
+
+    return rows[0].total;
+}
 
 const findById = async (id) => {
   const [rows] = await pool.execute(
@@ -66,6 +84,7 @@ const remove = async (id) => {
 
 module.exports = {
   findAll,
+  countAll,
   findById,
   create,
   update,
