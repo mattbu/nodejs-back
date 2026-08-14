@@ -2,9 +2,14 @@ const getPostListDto = (query) => {
   const page = Number(query.page) || 1;
   const limit = Number(query.limit) || 10;
 
+  const keyword = query.keyword?.trim() || ''
+  const sort =  query.sort || 'lastest'
+
   return {
     page,
-    limit
+    limit,
+    keyword,
+    sort
   }
 }
 

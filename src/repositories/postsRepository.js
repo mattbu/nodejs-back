@@ -1,29 +1,64 @@
 const pool = require('../config/db')
 
-const findAll = async ({limit, offset}) => {
-  const [rows] = await pool.query(
+const findAll = async ({ limit, offset, keyword, sort }) => {
+  const values = []
+  
+  let sql = `
+  SELECT id, title, content, created_at, user_id
+  FROM posts
+  `
+
+  if (keyword) {
+    sql += `
+    WHERE title LIKE ?
+    OR content LIKE ?
     `
-    SELECT id, title, content, created_at, user_id
-    FROM posts
-    ORDER BY id DESC
-    LIMIT ?
-    OFFSET ?
-    `,
-    [limit, offset]
-  );
+
+    const searchKeyword = `%${keyword}%`
+    values.push(searchKeyword, searchKeyword)
+  }
+
+  const sortMap = {
+      latest: "created_at DESC",
+      oldest: "created_at ASC",
+  };
+
+  const orderBy = sortMap[sort] || sortMap.latest;
+
+  sql += `
+  ORDER BY ${orderBy}
+  LIMIT ?
+  OFFSET ?
+  `
+
+  values.push(limit, offset)
+
+  const [rows] = await pool.query(sql, values);
 
   return rows;
 };
 
-const countAll = async () => {
-    const [rows] = await pool.execute(
-        `
-        SELECT COUNT(*) AS total
-        FROM posts
-        `
-    );
+const countAll = async ({ keyword }) => {
+  const values = []
 
-    return rows[0].total;
+  let sql = `
+  SELECT COUNT(*) AS total
+  FROM posts
+  `
+
+  if (keyword) {
+    sql += `
+    WHERE title LIKE ?
+    OR content LIKE ?
+    `
+
+    const searchKeyword = `%${keyword}%`
+    values.push(searchKeyword, searchKeyword)
+  }
+
+  const [rows] = await pool.query(sql, values);
+
+  return rows[0].total;
 }
 
 const findById = async (id) => {

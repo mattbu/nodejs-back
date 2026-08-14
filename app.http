@@ -8,8 +8,8 @@ Content-Type: application/json
 // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoidGVzdDJAZXNrc2suY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3ODY2MDMxNTcsImV4cCI6MTc4NjYwMzQ1N30.MqGtTIj6BIYNgIHhMs0gFfvcijAflco7D8gHwNMu8Kg
 ###
 
-GET http://localhost:3001/posts?page=4&limit=1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoidGVzdDJAZXNrc2suY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3ODY2ODM5MDgsImV4cCI6MTc4NjY4NDIwOH0._FZZTF2tcpKhaA1z2lceWaLL_hV5QHhBjAvWRgnCHaQ
+GET http://localhost:3001/posts?page=1&limit=10&sort=lastest&keyword=수정
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoidGVzdDJAZXNrc2suY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3ODY2ODgxNjksImV4cCI6MTc4NjY4ODQ2OX0.MiT-z6YD381xkV-1S-C2K7YAbv_BLkeX-6PUBlT2BXQ
 Content-Type: application/json
 
 # {
@@ -57,7 +57,7 @@ POST http://localhost:3001/auth/refresh
 Content-Type: application/json
 
 {
-  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTc4NjY4Mjg5MywiZXhwIjoxNzg3Mjg3NjkzfQ.jMtHl8ct_MRRpNr-SiOrAHsWoarZuH3v_YJ0HA8TQfk"
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTc4NjY4MzkwOCwiZXhwIjoxNzg3Mjg4NzA4fQ._8m45ZtRtFNveZL753x5Cjbb_wqZEyCVwCX_b9WGkFM"
 }
 
 ###

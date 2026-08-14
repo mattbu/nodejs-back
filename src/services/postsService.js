@@ -1,11 +1,11 @@
 const { findAll, countAll, findById, create, update, remove } = require('../repositories/postsRepository')
 const { BadRequestError, ForbiddenError, NotFoundError } = require('../errors')
 
-const findAllPosts = async ({page, limit}) => {
+const findAllPosts = async ({ page, limit, keyword, sort }) => {
   const offset = (page - 1) * limit
 
-  const posts = await findAll({limit, offset});
-  const total = await countAll()
+  const posts = await findAll({ limit, offset, keyword, sort });
+  const total = await countAll({ keyword })
   const totalPages = Math.ceil(total / limit);
 
   return {
