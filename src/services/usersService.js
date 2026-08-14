@@ -35,6 +35,7 @@ const findAllUsers = async () => {
 }
 
 const loginUser = async ({email, password}) => {
+    throw new Error('테스토스')
     const user = await findByEmail(email)
 
     if (!user) {

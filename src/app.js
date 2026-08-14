@@ -1,4 +1,9 @@
-require("dotenv").config();
+// require("dotenv").config();
+require("dotenv").config({
+    path: `.env.${process.env.NODE_ENV}`
+});
+
+console.log('[ENVIRONMENT]:', process.env.NODE_ENV);
 
 const express = require("express");
 const logger = require('./middleware/logger')
