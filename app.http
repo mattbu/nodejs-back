@@ -9,7 +9,7 @@ Content-Type: application/json
 ###
 
 GET http://localhost:3001/posts
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoidGVzdDJAZXNrc2suY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3ODY2MDc1MTMsImV4cCI6MTc4NjYwNzgxM30.WoRmP2xsdVwjEWc-LE2tB7EQMqjXlYU7oqpMEPgMN-g
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoidGVzdDJAZXNrc2suY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3ODY2Njg1NjgsImV4cCI6MTc4NjY2ODg2OH0.1KOJja_HsaM0GGGQjPADCVO_lklUVvM1ppXwLjutluc
 Content-Type: application/json
 
 # {
@@ -20,7 +20,7 @@ Content-Type: application/json
 ###
 
 GET http://localhost:3001/posts/999
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoidGVzdDJAZXNrc2suY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3ODY2MDk5OTksImV4cCI6MTc4NjYxMDI5OX0.x_wgOqkUrYyoq1T0F2HdUul7ky_AfwY6wBrRyHXL8AM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoidGVzdDJAZXNrc2suY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3ODY2Njg1NjgsImV4cCI6MTc4NjY2ODg2OH0.1KOJja_HsaM0GGGQjPADCVO_lklUVvM1ppXwLjutluc
 Content-Type: application/json
 
 ###
@@ -48,7 +48,7 @@ Content-Type: application/json
 ###
 
 GET http://localhost:3001/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoidGVzdDJAZXNrc2suY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3ODY2MDg2ODEsImV4cCI6MTc4NjYwODk4MX0.DepR4e4HODMSxuare1aSLTy2IAP2tKYsi_XjURAXXXg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoidGVzdDJAZXNrc2suY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3ODY2Njg1NjgsImV4cCI6MTc4NjY2ODg2OH0.1KOJja_HsaM0GGGQjPADCVO_lklUVvM1ppXwLjutluc
 Content-Type: application/json
 
 ###
@@ -57,7 +57,7 @@ POST http://localhost:3001/auth/refresh
 Content-Type: application/json
 
 {
-  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTc4NjYwODExMSwiZXhwIjoxNzg3MjEyOTExfQ.NbI4fZSaP2JJCH_nXdBmBsj9HIvbrOPelrDo6v_Z0S8"
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTc4NjYwOTk5OSwiZXhwIjoxNzg3MjE0Nzk5fQ.VcV_GCdAwcLQzE_CPIvorljiJgOSgu2vIYkmoPtreQQ"
 }
 
 ###

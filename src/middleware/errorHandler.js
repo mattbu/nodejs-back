@@ -1,7 +1,12 @@
 const { AppError } = require("../errors");
+const logger = require('../config/logger')
 
 const errorHandler = (err, req, res, next) => {
     if (err instanceof AppError) {
+        if (err.status >= 500) {
+            logger.error(err.stack);
+        }
+
         const response = {
             message: err.message
         };
@@ -13,7 +18,7 @@ const errorHandler = (err, req, res, next) => {
         return res.status(err.status).json(response);
     }
 
-    console.error(err);
+    logger.error(err.stack);
 
     return res.status(500).json({
         message: "서버 내부 오류가 발생했습니다."
