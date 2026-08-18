@@ -1,5 +1,11 @@
 const { getPostListDto } = require('../dtos/postsDto')
-const { findAllPosts, findPostById, createNewPost, updatePost, removePost } = require("../services/postsService");
+const {
+  findAllPosts,
+  findPostById,
+  createNewPost,
+  updatePost,
+  removePost,
+} = require("../services/postsService");
 
 const { createPostDto, updatePostDto } = require("../dtos/postsDto");
 const { successResponse } = require('../utils/response')

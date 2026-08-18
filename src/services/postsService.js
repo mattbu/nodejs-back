@@ -1,4 +1,12 @@
-const { findAll, countAll, findById, create, update, remove } = require('../repositories/postsRepository')
+const {
+  findAll,
+  countAll, 
+  findById, 
+  increaseView,
+  create, 
+  update, 
+  remove
+} = require('../repositories/postsRepository')
 const { BadRequestError, ForbiddenError, NotFoundError } = require('../errors')
 
 const findAllPosts = async ({ page, limit, keyword, sort }) => {
@@ -25,7 +33,10 @@ const findPostById = async (id) => {
   if (!post) {
     throw new NotFoundError("게시글이 없습니다.")
   }
-  return post;
+
+  await increaseView(id)
+
+  return await findById(id);
 };
 
 const createNewPost = async ({ title, content, userId }) => {

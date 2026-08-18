@@ -73,6 +73,18 @@ const findById = async (id) => {
   return rows[0]
 }
 
+const increaseView = async (id) => {
+  const [result] = await pool.execute(
+    `
+    UPDATE posts
+    SET views = views + 1
+    `,
+    [id]
+  )
+
+  return result.affectedRows > 0
+}
+
 const create = async ({ title, content, userId }) => {
   const [result] = await pool.execute(
     "INSERT INTO posts (title, content, user_id) VALUES (?, ?, ?)",
@@ -123,5 +135,6 @@ module.exports = {
   findById,
   create,
   update,
-  remove
+  remove,
+  increaseView,
 };
