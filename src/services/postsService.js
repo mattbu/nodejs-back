@@ -1,3 +1,4 @@
+const pool = require('../config/db')
 const {
   findAll,
   countAll, 
@@ -5,7 +6,9 @@ const {
   increaseView,
   create, 
   update, 
-  remove
+  remove,
+  findLike,
+  increaseLikeCount
 } = require('../repositories/postsRepository')
 const { BadRequestError, ForbiddenError, NotFoundError } = require('../errors')
 

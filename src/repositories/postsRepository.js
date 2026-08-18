@@ -78,6 +78,7 @@ const increaseView = async (id) => {
     `
     UPDATE posts
     SET views = views + 1
+    WHERE id = ?
     `,
     [id]
   )
@@ -129,6 +130,46 @@ const remove = async (id) => {
   return result;
 };
 
+const findLike = async (postId, userId) => {
+  const [rows] = await pool.execute(
+    `
+    SELECT id
+    FROM post_likes
+    WHERE post_id = ?
+    AND user_id = ?
+    `,
+    [postId, userId]
+  )
+
+  return rows[0]
+}
+
+const increaseLikeCount = async (connection, id) => {
+  const [result] = await connection.execute(
+    `
+    UPDATE posts
+    SET like_counts = like_counts + 1 
+    WHERE id = ?
+    `,
+    [id]
+  )
+
+  return result.affectedRows > 0
+}
+
+const decreaseLikeCount = async (connection, id) => {
+  const [result] = await connection.execute(
+    `UPDATE posts
+    SET like_counts = like_counts - 1 
+    WHERE id = ?
+    AND like_counts > 0
+    `,
+    [id]
+  )
+
+  return result.affectedRows > 0
+}
+
 module.exports = {
   findAll,
   countAll,
@@ -137,4 +178,7 @@ module.exports = {
   update,
   remove,
   increaseView,
+  findLike,
+  increaseLikeCount,
+  decreaseLikeCount
 };

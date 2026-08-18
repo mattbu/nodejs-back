@@ -8,6 +8,11 @@ const {
   removePosts,
 } = require("../controllers/postsController");
 
+const {
+  createLike,
+  deleteLike
+} = require('../controllers/postLikesController')
+
 const { validatePostId, validateCreatePost, validateUpdatePost } = require('../middleware/postValidation')
 
 const validate = require('../middleware/validate')
@@ -19,5 +24,7 @@ router.get("/:id", validatePostId, validate, getPost);
 router.post("/", validateCreatePost, validate, createPost);
 router.patch("/:id", validatePostId, validateUpdatePost, validate, updatePosts);
 router.delete("/:id", validatePostId, validate, removePosts);
+router.post('/:id/like', createLike)
+router.delete('/:id/like', deleteLike)
 
 module.exports = router;
